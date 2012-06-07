@@ -9,7 +9,7 @@ require 'capybara/poltergeist'
 require 'support/test_app'
 require 'support/spec_logger'
 
-Capybara.default_wait_time = 0 # less timeout so tests run faster
+Capybara.default_wait_time = 1 # less timeout so tests run faster
 
 alias :running :lambda
 

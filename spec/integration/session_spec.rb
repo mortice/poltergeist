@@ -59,7 +59,7 @@ describe Capybara::Session do
           end
 
           it "clicks properly" do
-            @session.click_link "O hai"
+            expect { @session.click_link "O hai" }.to_not raise_error(Capybara::Poltergeist::ClickFailed)
           end
         end
       end
