@@ -55,7 +55,7 @@ describe Capybara::Session do
 
         context "and is then brought in" do
           before do
-            @session.execute_script "$('#off-the-left').animate({left: '+4010'});"
+            @session.execute_script "$('#off-the-left').animate({left: '10'});"
           end
 
           it "clicks properly" do
