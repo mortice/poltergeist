@@ -43,6 +43,26 @@ describe Capybara::Session do
           expect { @session.find(:css, "username") }.to raise_error(Capybara::ElementNotFound)
         end
       end
+
+      context "when the element is not in the viewport" do
+        before do
+          @session.visit("/poltergeist/with_js")
+        end
+
+        it "raises a ClickFailed error" do
+          expect { @session.click_link("O hai") }.to raise_error(Capybara::Poltergeist::ClickFailed)
+        end
+
+        context "and is then brought in" do
+          before do
+            @session.execute_script "$('#off-the-left').animate({left: '+4010'});"
+          end
+
+          it "clicks properly" do
+            @session.click_link "O hai"
+          end
+        end
+      end
     end
 
     describe 'Node#set' do
